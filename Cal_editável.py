@@ -9,12 +9,12 @@ cal.geometry('295x360')
 cal.resizable(0, 0)
 
 # Criando um quadro para colocar o campo de entrada
-input_frame = Frame(cal, width = 2, height = 3, bd = 0, highlightbackground = "black", highlightcolor = "black", highlightthickness = 1)
+input_frame = Frame(cal, width = 100, height = 3, bd = 0, highlightbackground = "black", highlightcolor = "black", highlightthickness = 1)
 input_frame.grid()
 
 
 # Criando a campo de entrada propriamente dito
-display = Entry(input_frame, font = ('times', 18, 'normal'), width = 19, borderwidth= 3, justify= RIGHT)
+display = Entry(input_frame, font = ('times', 18, 'normal'), width = 24, borderwidth= 3, justify= RIGHT)
 display.grid(row = 0, column = 0, columnspan= 3, padx= 1, pady= 1)
 
 i=0
@@ -30,6 +30,7 @@ def get_numbers(n):
 
 #Pegando operação inserida
 def get_operation(operator):
+    operator_lenght = len(operator)
     if len(operator):
         global i
         display.insert(i, operator)
@@ -88,19 +89,19 @@ btn_0 = Button(btns_frame, text= "0", command= lambda: get_numbers(0), padx= 20,
 
 #Botões De Cálculo
 
-btn_clear = Button(btns_frame, text= "C", command= lambda: clear_display(), fg= "#008000", padx=20, pady= 20).grid(row= 2, column= 0, sticky= W+E)
-btn_pow = Button(btns_frame, text= "x²", command= lambda: get_operation("**2") , fg= "#008000", padx= 20, pady= 20).grid(row= 2, column= 3, sticky= W+E)
+btn_frac = Button(btns_frame, text= "1/", command= lambda: get_operation('1/'), fg= "#008000", padx=20, pady= 20).grid(row= 2, column= 0, sticky= W+E)
+btn_pow = Button(btns_frame, text= "x²", command= lambda: get_operation("**2") , fg= "#008000", padx= 20, pady= 20).grid(row= 2, column= 1, sticky= W+E)
 btn_porcentagem = Button(btns_frame, text= "%", command= lambda: get_operation("/100*"), fg= "#008000", padx= 20, pady= 20).grid(row= 2, column= 2, sticky= W+E)
+btn_clear = Button(btns_frame, text= "C", command= lambda: clear_display(), fg= "#008000", padx=20, pady= 20).grid(row= 2, column= 3, sticky= W+E)
 btn_undo = Button(btns_frame, text= "⌫", command= lambda: undo(), fg="red", padx= 20, pady= 20).grid(row= 2, column= 4, sticky= W+E)
-btn_div = Button(btns_frame, text= "/", command= lambda: get_operation("/"), fg= "#008000", padx= 20, pady= 20).grid(row= 3, column= 3, sticky= W+E)
-btn_mult = Button(btns_frame, text= "*", command= lambda: get_operation("*"), fg= "#008000", padx= 20, pady= 20).grid(row= 4, column= 3, sticky= W+E)
-btn_minus = Button(btns_frame, text= "-", command= lambda: get_operation("-"), fg= "#008000", padx= 20, pady= 20).grid(row= 4, column= 4, sticky= W+E)
-btn_plus = Button(btns_frame, text= "+", command= lambda: get_operation("+"), fg="#008000", padx= 20, pady= 20).grid(row= 3, column= 4, sticky= W+E)
+btn_openP = Button(btns_frame, text= "(", command= lambda: get_operation('('), fg= "#008000", padx=20, pady= 20).grid(row= 3, column= 3, sticky= W+E)
+btn_closeP = Button(btns_frame, text= ")", command= lambda: get_operation(')'), fg= "#008000", padx=20, pady= 20).grid(row= 3, column= 4, sticky= W+E)
+btn_div = Button(btns_frame, text= "/", command= lambda: get_operation("/"), fg= "#008000", padx= 20, pady= 20).grid(row= 4, column= 3, sticky= W+E)
+btn_plus = Button(btns_frame, text= "+", command= lambda: get_operation("+"), fg="#008000", padx= 20, pady= 20).grid(row= 4, column= 4, sticky= W+E)
+btn_mult = Button(btns_frame, text= "*", command= lambda: get_operation("*"), fg= "#008000", padx= 20, pady= 20).grid(row= 5, column= 3, sticky= W+E)
+btn_minus = Button(btns_frame, text= "-", command= lambda: get_operation("-"), fg= "#008000", padx= 20, pady= 20).grid(row= 5, column= 4, sticky= W+E)
 btn_equal = Button(btns_frame, text= "=", command= lambda: calculate(), padx= 20, fg= "#008000", pady= 20).grid(row= 6, column= 3, columnspan = 2, sticky= W+E)
+btn_negativo = Button(btns_frame, text= "±", command= lambda: get_operation('-'), fg= "#008000", padx=20, pady= 20).grid(row= 6, column= 2, sticky= W+E)
 btn_decimal = Button(btns_frame, text= ".", command= lambda: get_operation("."), fg= "#008000", padx= 20, pady= 20).grid(row= 6, column= 0, sticky= W+E)
-btn_left = Button(btns_frame, text= "(", command= lambda: get_operation('('), fg= "#008000", padx=20, pady= 20).grid(row= 5, column= 3, sticky= W+E)
-btn_negativo = Button(btns_frame, text= "±", command= lambda: get_operation('-'), fg= "#008000", padx=20, pady= 20).grid(row= 2, column= 1, sticky= W+E)
-btn_rigth = Button(btns_frame, text= ")", command= lambda: get_operation(')'), fg= "#008000", padx=20, pady= 20).grid(row= 5, column= 4, sticky= W+E)
-btn_sob_um = Button(btns_frame, text= "1/", command= lambda: get_operation('1/'), fg= "#008000", padx=20, pady= 20).grid(row= 6, column= 2, sticky= W+E)
 
 cal.mainloop()
