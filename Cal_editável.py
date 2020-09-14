@@ -9,8 +9,8 @@ cal.geometry('295x360')
 cal.resizable(0, 0)
 
 # Criando um quadro para colocar o campo de entrada
-input_frame = Frame(cal, width = 100, height = 3, bd = 0, highlightbackground = "black", highlightcolor = "black", highlightthickness = 1)
-input_frame.grid()
+input_frame = Frame(cal, width = 20, height = 3, bd = 0, highlightbackground = "black", highlightcolor = "black", highlightthickness = 1)
+input_frame.grid()  
 
 
 # Criando a campo de entrada propriamente dito
